@@ -15,9 +15,9 @@ for line in open(sys.argv[1]):
 	for ch in line.strip().lower():
 		if ch not in homeQWERTY:
 			canAdd["Q"] = False
-			break
 		if ch not in homeDVORAK:
 			canAdd["D"] = False
+		if not canAdd["Q"] and not canAdd["D"]:
 			break
 
 	if canAdd["Q"]:

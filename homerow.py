@@ -7,8 +7,8 @@ if len(sys.argv) != 2:
 	print('Usage: python homerow.py <dictionary>')
 	exit(len(sys.argv))
 
-matchesQWERTY = set()
-matchesDvorak = set()
+matchesQWERTY = list()
+matchesDvorak = list()
 
 for line in open(sys.argv[1]):
 	canAdd = {"Q": True, "D": True}
@@ -21,9 +21,10 @@ for line in open(sys.argv[1]):
 			break
 
 	if canAdd["Q"]:
-		matchesQWERTY.add(line.strip())
+		matchesQWERTY.append(line.strip())
 	if canAdd["D"]:
-		matchesDvorak.add(line.strip())
+		matchesDvorak.append(line.strip())
 
 print(matchesQWERTY)
+print()
 print(matchesDvorak)

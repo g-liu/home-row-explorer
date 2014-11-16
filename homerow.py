@@ -1,7 +1,7 @@
 import sys
 
-homeQWERTY = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
-homeDVORAK = ['a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', 's'];
+homeQWERTY = set('asdfghjkl');
+homeDVORAK = set('aoeuidhtns');
 
 if len(sys.argv) != 2:
 	print('Usage: python homerow.py <dictionary>')
@@ -11,19 +11,12 @@ matchesQWERTY = list()
 matchesDvorak = list()
 
 for line in open(sys.argv[1]):
-	canAdd = {"Q": True, "D": True}
-	for ch in line.strip().lower():
-		if ch not in homeQWERTY:
-			canAdd["Q"] = False
-		if ch not in homeDVORAK:
-			canAdd["D"] = False
-		if not canAdd["Q"] and not canAdd["D"]:
-			break
+	line = line.strip().lower()
 
-	if canAdd["Q"]:
-		matchesQWERTY.append(line.strip())
-	if canAdd["D"]:
-		matchesDvorak.append(line.strip())
+	if set(line) <= homeQWERTY:
+		matchesQWERTY.append(line)
+	if set(line) <= homeDVORAK:
+		matchesDvorak.append(line)
 
 print(matchesQWERTY)
 print()

@@ -1,23 +1,15 @@
 import sys
 
-homeQWERTY = set('asdfghjkl');
-homeDVORAK = set('aoeuidhtns');
-
-if len(sys.argv) != 2:
-	print('Usage: python homerow.py <dictionary>')
+if len(sys.argv) != 3:
+	print('Usage: python homerow.py <dictionary> <layout>')
+	print('  <layout>: one of "q" (QWERTY) or "d" (Dvorak)')
 	exit(len(sys.argv))
 
-matchesQWERTY = list()
-matchesDvorak = list()
+matches = list()
+home = set('asdfghjkl') if sys.argv[2] is "q" else set('aoeuidhtns')
 
 for line in open(sys.argv[1]):
 	line = line.strip().lower()
 
-	if set(line) <= homeQWERTY:
-		matchesQWERTY.append(line)
-	if set(line) <= homeDVORAK:
-		matchesDvorak.append(line)
-
-print(matchesQWERTY)
-print()
-print(matchesDvorak)
+	if set(line) <= home:
+		print(line)

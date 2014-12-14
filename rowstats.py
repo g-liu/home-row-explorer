@@ -1,14 +1,6 @@
 import sys
 import fileinput
 
-def getLengthDistribution(wordList):
-	lengths = dict()
-
-	for word in wordList:
-		lengths[len(word)] = 1 if len(word) not in lengths else lengths[len(word)] + 1
-
-	return lengths
-
 # Returns the number of words in the top n most frequently used words
 def numInTop(n):
 	f = open(sys.argv[1], 'r')

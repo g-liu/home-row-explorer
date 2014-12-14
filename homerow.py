@@ -6,10 +6,11 @@ if len(sys.argv) != 3:
 	exit(len(sys.argv))
 
 matches = list()
-home = set('asdfghjkl') if sys.argv[2] is "q" else set('aoeuidhtns')
+home = set('asdfghjkl;\'') if sys.argv[2] is "q" else set('aoeuidhtns-')
 
 for line in open(sys.argv[1]):
 	line = line.strip().lower()
 
 	if set(line) <= home:
 		print(line)
+		matches.append(line)

@@ -22,8 +22,7 @@ def numInTop(n):
 	numInTop = 0
 	f = open(sys.argv[1], 'r')
 	for i in range(0, n):
-		word = f.readline().strip().split("\t")[0]
-		if word in word_list:
+		if f.readline().strip().split("\t")[0] in word_list:
 			numInTop += 1
 
 	f.close()
